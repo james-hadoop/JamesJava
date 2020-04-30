@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz" version="1.2">
+ <meta lastmodifieddate="2020-04-30">
+  <creator>james</creator>
+  <description>gexf demo</description>
+ </meta>
+ <graph defaultedgetype="undirected" idtype="string" mode="static">
+  <attributes class="node" mode="static">
+   <attribute id="modularity_class" title="Class" type="integer"/>
+  </attributes>
+  <nodes count="2">
+   <node id="1" label="node1">
+    <attvalues>
+     <attvalue for="modularity_class" value="1"/>
+    </attvalues>
+    <viz:color r="235" g="81" b="72"/>
+    <viz:position x="-200.0" y="200.0" z="0.0"/>
+    <viz:size value="50.0"/>
+   </node>
+   <node id="2" label="node2">
+    <attvalues>
+     <attvalue for="modularity_class" value="2"/>
+    </attvalues>
+    <viz:color r="235" g="81" b="72"/>
+    <viz:position x="-300.0" y="300.0" z="0.0"/>
+    <viz:size value="50.0"/>
+   </node>
+  </nodes>
+  <edges count="1">
+   <edge id="0" source="1" target="2" type="undirected" weight="5.0"/>
+  </edges>
+ </graph>
+</gexf>
