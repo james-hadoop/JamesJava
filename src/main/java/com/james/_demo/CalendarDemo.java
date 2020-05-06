@@ -31,7 +31,9 @@ public class CalendarDemo {
         System.out.println("hour: " + hour);
     }
 
-    /*
+    /**
+     * created by James on 2020-05-07.
+     * <p>
      * Get previousDays days before the given date
      */
     public List<String> getDatePeriod(Date date, int previousDays, String targetDateFormat) {
