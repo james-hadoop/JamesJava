@@ -4,6 +4,8 @@ import com.james.data_structure.tree.BinTree;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class JamesUtil {
     public static void printDivider() {
@@ -50,5 +52,17 @@ public class JamesUtil {
             System.out.print(node.data + "\t");
         }
         System.out.println("\n");
+    }
+
+    public static void printMap(Map<String, Integer> map) {
+        if (null == map || 0 == map.size()) {
+            return;
+        }
+
+        Set<String> setKey = map.keySet();
+        for (String key : setKey) {
+            System.out.println("key: " + key + " --> " + "value: " + map.get(key));
+        }
+        System.out.println();
     }
 }
