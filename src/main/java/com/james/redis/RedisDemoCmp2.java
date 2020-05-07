@@ -12,18 +12,20 @@ public class RedisDemoCmp2 {
         JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost");
         Jedis jedis = pool.getResource();
 
-        int[] intLessThan4BytesArray = new int[1000*1000];
-        int[] intMoreThan4BytesArray = new int[1000*1000];
+        final int KEY_CNT=1000*10;
+
+        int[] intLessThan4BytesArray = new int[KEY_CNT];
+        int[] intMoreThan4BytesArray = new int[KEY_CNT];
 
 
-        IntStream.range(0, 1000*1000).forEachOrdered(i -> {
+        IntStream.range(0, KEY_CNT).forEachOrdered(i -> {
             intLessThan4BytesArray[i] = i % 2 + 1;
             intMoreThan4BytesArray[i] = i % 2 + 6123;
 
             System.out.println(intLessThan4BytesArray[i] + " vs. " + intMoreThan4BytesArray[i]);
         });
 
-        IntStream.range(0, 1000*1000).forEachOrdered(i -> {
+        IntStream.range(0, KEY_CNT).forEachOrdered(i -> {
             /**
              * redis-memory-for-key -s localhost -p 6379 intLessThan4BytesArray_billion
              * Key				intLessThan4BytesArray
