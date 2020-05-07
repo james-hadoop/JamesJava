@@ -22,6 +22,7 @@
         <httpcore.version>4.4.5</httpcore.version>
         <httpcomponents.version>4.5.3</httpcomponents.version>
         <jsoup.version>1.9.2</jsoup.version>
+        <jedis.version>3.3.0</jedis.version>
     </properties>
 
     <dependencies>
@@ -75,6 +76,11 @@
             <groupId>it.uniroma1.dis.wsngroup.gexf4j</groupId>
             <artifactId>gexf4j</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
         </dependency>
     </dependencies>
 
