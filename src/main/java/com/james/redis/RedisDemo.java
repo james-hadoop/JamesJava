@@ -21,12 +21,7 @@ public class RedisDemo {
 //         * Length of Largest Element	6
 //         */
 //        jedis.hset("k1", "key1", "value1");
-        jedis.del("k1");
 
-        IntStream.range(0, 100).forEachOrdered(i -> {
-            System.out.println(i);
-            jedis.del("k1", "key" + i, "value" + i);
-        });
 
 //        /**
 //         * redis-memory-for-key -s localhost -p 6379 key1
@@ -49,6 +44,18 @@ public class RedisDemo {
 //        IntStream.range(0, 100).forEachOrdered(i -> {
 //            System.out.println(i);
 //            jedis.hset("k1", "key" + i, "value" + i);
+//        });
+
+//        /**
+//         * create by James on 2020-05-07.
+//         *
+//         * 删除key
+//         */
+//        jedis.del("k1");
+//
+//        IntStream.range(0, 100).forEachOrdered(i -> {
+//            System.out.println(i);
+//            jedis.del("k1", "key" + i, "value" + i);
 //        });
     }
 }
