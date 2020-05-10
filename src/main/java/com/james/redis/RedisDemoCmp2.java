@@ -12,7 +12,7 @@ public class RedisDemoCmp2 {
         JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost");
         Jedis jedis = pool.getResource();
 
-        final int KEY_CNT=1000*10;
+        final int KEY_CNT=1000*1000;
 
         int[] intLessThan4BytesArray = new int[KEY_CNT];
         int[] intMoreThan4BytesArray = new int[KEY_CNT];
@@ -27,7 +27,7 @@ public class RedisDemoCmp2 {
 
         IntStream.range(0, KEY_CNT).forEachOrdered(i -> {
             /**
-             * redis-memory-for-key -s localhost -p 6379 intLessThan4BytesArray_billion
+             * redis-memory-for-key -s localhost -p 6379 intLessThan4BytesArray_billion_test
              * Key				intLessThan4BytesArray
              * Bytes				965
              * Type				hash
@@ -35,10 +35,10 @@ public class RedisDemoCmp2 {
              * Number of Elements		100
              * Length of Largest Element	8
              */
-            jedis.hset("intLessThan4BytesArray_billion", "key" + i, String.valueOf(intLessThan4BytesArray[i]));
+            jedis.hset("intLessThan4BytesArray_billion_test", "key" + i, String.valueOf(intLessThan4BytesArray[i]));
 
             /**
-             * redis-memory-for-key -s localhost -p 6379 intLessThan4BytesArray_bytes_billion
+             * redis-memory-for-key -s localhost -p 6379 intLessThan4BytesArray_bytes_billion_test
              * Key				intLessThan4BytesArray_bytes
              * Bytes				1373
              * Type				hash
@@ -46,10 +46,10 @@ public class RedisDemoCmp2 {
              * Number of Elements		100
              * Length of Largest Element	5
              */
-            jedis.hset("intLessThan4BytesArray_bytes_billion".getBytes(), ("key" + i).getBytes(), DataUtil.intToByteArray(intLessThan4BytesArray[i]));
+            jedis.hset("intLessThan4BytesArray_bytes_billion_test".getBytes(), ("key" + i).getBytes(), DataUtil.intToByteArray(intLessThan4BytesArray[i]));
 
             /**
-             * redis-memory-for-key -s localhost -p 6379 intMoreThan4BytesArray_billion
+             * redis-memory-for-key -s localhost -p 6379 intMoreThan4BytesArray_billion_test
              * Key				intMoreThan4BytesArray
              * Bytes				965
              * Type				hash
@@ -57,10 +57,10 @@ public class RedisDemoCmp2 {
              * Number of Elements		100
              * Length of Largest Element	8
              */
-            jedis.hset("intMoreThan4BytesArray_billion", "key" + i, String.valueOf(intMoreThan4BytesArray[i]));
+            jedis.hset("intMoreThan4BytesArray_billion_test", "key" + i, String.valueOf(intMoreThan4BytesArray[i]));
 
             /**
-             * redis-memory-for-key -s localhost -p 6379 intMoreThan4BytesArray_bytes_billion
+             * redis-memory-for-key -s localhost -p 6379 intMoreThan4BytesArray_bytes_billion_test
              * Key				intMoreThan4BytesArray_bytes
              * Bytes				1373
              * Type				hash
@@ -68,11 +68,11 @@ public class RedisDemoCmp2 {
              * Number of Elements		100
              * Length of Largest Element	5
              */
-            jedis.hset("intMoreThan4BytesArray_bytes_billion".getBytes(), ("key" + i).getBytes(), DataUtil.intToByteArray(intMoreThan4BytesArray[i]));
+            jedis.hset("intMoreThan4BytesArray_bytes_billion_test".getBytes(), ("key" + i).getBytes(), DataUtil.intToByteArray(intMoreThan4BytesArray[i]));
         });
 
-        String val1 = jedis.hget("intLessThan4BytesArray_billion", "key9");
-        byte[] val2 = jedis.hget("intLessThan4BytesArray_bytes_billion".getBytes(), "key9".getBytes());
+        String val1 = jedis.hget("intLessThan4BytesArray_billion_test", "key9");
+        byte[] val2 = jedis.hget("intLessThan4BytesArray_bytes_billion_test".getBytes(), "key9".getBytes());
         System.out.println(val1 + " vs. " + val2);
 
 //        /**
