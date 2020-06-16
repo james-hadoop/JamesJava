@@ -12,8 +12,10 @@ public class RedisDemoCmp {
         JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost");
         Jedis jedis = pool.getResource();
 
-        int[] intLessThan4BytesArray = new int[100];
-        int[] intMoreThan4BytesArray = new int[100];
+        final int KEY_CNT = 1000 * 100;
+
+        int[] intLessThan4BytesArray = new int[KEY_CNT];
+        int[] intMoreThan4BytesArray = new int[KEY_CNT];
 
 
         IntStream.range(0, 100).forEachOrdered(i -> {
