@@ -48,8 +48,8 @@ public class RedisDemoCmp2 {
             jedis.hset("intMoreThan4Bytes", "key" + i, String.valueOf(intMoreThan4BytesArray[i]));
         });
 
-        String val1 = jedis.hget("intLessThan4BytesArray_billion", "key9");
-        byte[] val2 = jedis.hget("intLessThan4BytesArray_bytes_billion".getBytes(), "key9".getBytes());
+        String val1 = jedis.hget("intLessThan4BytesArray_billion_test", "key9");
+        byte[] val2 = jedis.hget("intLessThan4BytesArray_bytes_billion_test".getBytes(), "key9".getBytes());
         System.out.println(val1 + " vs. " + val2);
 
 //        /**
