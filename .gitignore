@@ -6,3 +6,4 @@
 *.iml
 /src/main/resources/data
 *.log
+#/src/main/java/com/james/hive/lineage/tct

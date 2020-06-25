@@ -1,6 +1,4 @@
-package com.james.hive.utils.entity;
-
-import com.google.gson.annotations.Expose;
+package com.james.hive.lineage.tct.entity;
 
 import java.util.List;
 

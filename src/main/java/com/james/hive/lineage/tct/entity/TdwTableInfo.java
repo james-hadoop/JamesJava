@@ -1,4 +1,4 @@
-package com.james.hive.utils.entity;
+package com.james.hive.lineage.tct.entity;
 
 public class TdwTableInfo{
     private String retCode;
