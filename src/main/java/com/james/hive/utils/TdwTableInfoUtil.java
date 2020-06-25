@@ -79,17 +79,40 @@ public class TdwTableInfoUtil {
 
         String ddl = dbPrefix + dllPrefix + sbString.substring(0, sbString.length() - 1) + ddlPostfix;
 
-        System.out.println(String.format("%s", ddl));
+//        System.out.println(String.format("%s", ddl));
         return ddl;
     }
 
+    public static String tryMakeTdwTableDDL(String[] tdwDBArr, String tdwTable) {
+        if (null == tdwDBArr || null == tdwTable || tdwDBArr.length < 1 || tdwTable.isEmpty()) {
+            return null;
+        }
 
-    public static void main(String[] args) throws Exception {
-        String tdwDB = "pcg_txkd_shared_data_app";
+        String tdwTableDDL = null;
+
+        for (int i = 0; i < tdwDBArr.length; i++) {
+            System.out.println(tdwDBArr[i]);
+            try {
+                tdwTableDDL = makeTdwTableDDL(tdwDBArr[i], tdwTable);
+                if (null != tdwTableDDL) {
+                    break;
+                }
+            } catch (Exception e) {
+                System.out.println("! " + e.getMessage());
+            }
+        }
+
+        return tdwTableDDL;
+    }
+
+
+    public static void main(String[] args) {
+        String[] tdwDBArr = {"sng_mp_etldata", "sng_mediaaccount_app", "pcg_txkd_shared_data_app"};
+
         String tdwTable = "t_dwt_consume_video_rowkeyperformance_normal_d";
 
-        makeTdwTableDDL(tdwDB, tdwTable);
-//        System.out.println(tdwTableInfo.getRetObj());
+        String tdwTableDDL = tryMakeTdwTableDDL(tdwDBArr, tdwTable);
 
+        System.out.println(tdwTableDDL);
     }
 }
