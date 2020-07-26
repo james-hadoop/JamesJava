@@ -62,9 +62,14 @@ public class HiveSqlUtil {
     }
 
     public static void main(String[] args) {
+        String s1 = "INSERT INTO rikideng_DWD_small_scrip_session_talk SELECT 20200613 AS ftime, op_type, if(op_type != SINGLE_QUOTE0X800A806SINGLE_QUOTE,d1,NULL) AS rowkey, d2 AS message_id, fromuin AS from_uin, touin AS to_uin FROM hlw.t_dw_dc01160 WHERE op_type IN (SINGLE_QUOTE0X800A805SINGLE_QUOTE, SINGLE_QUOTE0X800A806SINGLE_QUOTE, SINGLE_QUOTE0X800A80ESINGLE_QUOTE) AND tdbank_imp_date BETWEEN 2020061300 AND 2020061323";
+
+        String s2 = "INSERT INTO t_dwa_kd_video_hudong_ald_layer_1d_d SELECT 20200613 ,group_key ,SINGLE_QUOTEallSINGLE_QUOTE ,MOD(bigint1(conv(substr(md5(uin&#124;&#124;SINGLE_QUOTE-SINGLE_QUOTE,group_key),0,15),16,10)),bucket_num) ,SUM(watch_puin_pv) ,SUM(watch_puin_pv_o2t) ,SUM(watch_puin_pv_ld) ,SUM(puin_page_pv) ,SUM(puin_page_pv_02t) ,SUM(puin_page_pv_ld) ,SUM(zan_pv) ,SUM(zan_pv_o2t) ,SUM(zan_pv_ld) ,SUM(d_zan_pv) ,SUM(d_zan_pv_o2t) ,SUM(d_zan_pv_ld) ,SUM(comment_pv) ,SUM(comment_pv_o2t) ,SUM(comment_pv_ld) ,SUM(biu_pv) ,SUM(biu_pv_o2t) ,SUM(biu_pv_ld) ,SUM(q_comment_pv) ,SUM(q_comment_pv_o2t) ,SUM(q_comment_pv_ld) ,SUM(comment_duration) FROM ( SELECT dt ,bucket_num ,group_key FROM mengqi_tpg_ald_info WHERE dt=20200613 AND valid=1 AND data_type=SINGLE_QUOTEvideo_hudongSINGLE_QUOTE ) a RIGHT JOIN t_dwa_kd_video_hudong_ald_dwa_1d_d partition (p_20200613) b ON a.dt=b.ftime GROUP BY group_key ,MOD(bigint1(conv(substr(md5(uin&#124;&#124;SINGLE_QUOTE-SINGLE_QUOTE,group_key),0,15),16,10)),bucket_num)";
+
+        String s3 = "INSERT INTO kuaibao_ods_boss4715_log select 20200613 as imp_date, ftime, idfv, sos, shardware, logintype, openid, qq, phone_id, teamid, teamname, sidfv, binarymd5, copname, sappver, iisjb from omg_tdbank.mobile_t_boss_v1_4715 where tdbank_imp_date >= 2020061300 and tdbank_imp_date <= 2020061324";
 
 
-        String sql = "";
+        String sql = s3;
 
         ASTNode ast = null;
         try {

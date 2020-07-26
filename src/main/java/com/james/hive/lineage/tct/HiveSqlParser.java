@@ -1,5 +1,6 @@
 package com.james.hive.lineage.tct;
 
+import jline.internal.Log;
 import org.apache.hadoop.hive.ql.parse.ASTNode;
 import org.apache.hadoop.hive.ql.parse.BaseSemanticAnalyzer;
 import org.apache.hadoop.hive.ql.parse.HiveParser;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 public class HiveSqlParser {
     private String sql;
+    private String db;
 
     private Set<String> tableList = new HashSet<>();
 
@@ -20,11 +22,16 @@ public class HiveSqlParser {
     public HiveSqlParser() {
     }
 
+    public HiveSqlParser(String sql, String db) {
+        this.sql = sql;
+        this.db = db;
+    }
+
     public HiveSqlParser(String sql) {
         this.sql = sql;
     }
 
-    public Set<String> distrctTablesFromSql() {
+    public Set<String> distrctTablesFromSql() throws Exception {
         if (this.sql == null || this.sql.isEmpty()) {
             return null;
         }
@@ -32,8 +39,9 @@ public class HiveSqlParser {
         ASTNode ast = null;
         try {
             ast = pd.parse(this.sql);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+//            Log.error(ex.getMessage());
+            throw new Exception(ex);
         }
         if (null == ast) {
             return null;
@@ -60,10 +68,9 @@ public class HiveSqlParser {
 //                    tableList.add(tableName);
 //                    break;
                 case HiveParser.TOK_TABNAME:
-                    String tgtTable =(ast.getChildCount()==1)?ast.getChild(0).getText() : ast.getChild(1).getText();
+                    String tgtTable = (ast.getChildCount() == 1) ? db + "." + ast.getChild(0).getText() : ast.getChild(0).getText() + "." + ast.getChild(1).getText();
                     tableList.add(tgtTable);
                     break;
-
 
 //                case HiveParser.TOK_INSERT_INTO:
 //                    String tgtTable = ast.getChild(0).getChild(0).getChild(0).getText();
@@ -83,8 +90,8 @@ public class HiveSqlParser {
         }
     }
 
-    public static void main(String[] args) {
-        String s3 = "";
+    public static void main(String[] args) throws Exception {
+        String s3 = "INSERT INTO kuaibao_ods_boss4715_log select 20200613 as imp_date, ftime, idfv, sos, shardware, logintype, openid, qq, phone_id, teamid, teamname, sidfv, binarymd5, copname, sappver, iisjb from omg_tdbank.mobile_t_boss_v1_4715 where tdbank_imp_date >= 2020061300 and tdbank_imp_date <= 2020061324";
 
         String sql = s3;
 
@@ -96,5 +103,4 @@ public class HiveSqlParser {
             System.out.println(s);
         }
     }
-
 }
