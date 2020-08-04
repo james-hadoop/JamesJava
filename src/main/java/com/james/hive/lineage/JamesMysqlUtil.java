@@ -75,6 +75,7 @@ public class JamesMysqlUtil {
             String sql = "INSERT INTO txkd_dc_hive_lineage_log(lineage_str,update_time) VALUES (?,?)";
             ps = conn.prepareStatement(sql);
             ps.setString(1, lineage);
+
             ps.setString(2, updateTime);
 
             int resultSet = ps.executeUpdate();

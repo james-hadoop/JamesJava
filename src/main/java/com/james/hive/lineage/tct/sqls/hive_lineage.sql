@@ -58,3 +58,55 @@ sql_str not like '%avonxu%');
 
 select sql_str from txkd_dc_hive_sql_focus where (sql_str not like '%values%' and sql_str not like '%VALUES%' and sql_str not like '%with%' and sql_str not like '%WITH%' and
 sql_str not like '%avonxu%' and sql_str not like '%hongyi%' and sql_str not like '%hdfs%' and sql_str not like '%--%') order by sql_str;
+
+select sql_str from txkd_dc_hive_sql_focus where sql_str like '%kandian_mid_video_cinfo_d%' and sql_str like '%kandian_video_medium_full_info_d%';
+
+select sql_str from txkd_dc_hive_sql_focus where sql_str like '%INSERT OVERWRITE TABLE t_dwa_kd_video_hudong_ald_layer_1d_d%';
+
+CREATE TABLE `txkd_dc_hive_sql_with_ddl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sql_str` text NOT NULL,
+  `ddl` text not null,
+  `update_time` datetime NOT NULL COMMENT '更新时间',
+  KEY `idx_id` (`id`),
+  KEY `idx_update_time` (`update_time`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `txkd_dc_hive_sql_focus_clean` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sql_str` text NOT NULL,
+  KEY `idx_id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='hive sql';
+
+insert into txkd_dc_hive_sql_focus_clean
+select id,sql_str from txkd_dc_hive_sql_focus where (sql_str not like '%values%' and sql_str not like '%VALUES%' and sql_str not like '%with%' and sql_str not like '%WITH%' and
+sql_str not like '%avonxu%' and sql_str not like '%hongyi%' and sql_str not like '%hdfs%' and sql_str not like '%--%') order by sql_str;
+
+CREATE TABLE `txkd_dc_hive_sql_with_table_names` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sql_str` text NOT NULL,
+  `table_names` text NOT NULL,
+  `update_time` datetime NOT NULL COMMENT '更新时间',
+  KEY `idx_id` (`id`),
+  KEY `idx_update_time` (`update_time`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+select count(1) cnt from txkd_dc_hive_sql_with_table_names;
+
+CREATE TABLE `txkd_dc_hive_sql_table_names_with_ddl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `	` text NOT NULL,
+  `ddl` text NOT NULL,
+  `update_time` datetime NOT NULL COMMENT '更新时间',
+  KEY `idx_id` (`id`),
+  KEY `idx_update_time` (`update_time`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
+
+
+
+
+
