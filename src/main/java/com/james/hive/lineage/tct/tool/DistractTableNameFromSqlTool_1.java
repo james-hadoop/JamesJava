@@ -1,6 +1,5 @@
 package com.james.hive.lineage.tct.tool;
 
-import com.james.hive.lineage.tct.TdwSqlUtil;
 import com.james.hive.lineage.tct.common.Const;
 import com.james.hive.lineage.tct.utils.HiveLineageMysqlUtil;
 
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * create by jamesqjiang on 2020-06-29.
+ * create by James on 2020-06-29.
  * <p>
  * 将TDW SQL转化为Hive SQL
  * 从Hive SQL中解析出涉及到的所有Hive表的表名

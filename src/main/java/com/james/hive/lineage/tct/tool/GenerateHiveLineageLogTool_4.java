@@ -11,7 +11,7 @@ import java.sql.*;
 import java.util.List;
 
 /**
- * create by jamesqjiang on 2020-06-29.
+ * create by James on 2020-06-29.
  * <p>
  * 将DML插入Hive,生成HiveLineage,写入txkd_dc_hive_lineage_log
  * <p>

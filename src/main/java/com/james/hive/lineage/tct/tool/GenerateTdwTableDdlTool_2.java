@@ -1,9 +1,7 @@
 package com.james.hive.lineage.tct.tool;
 
-import com.james.hive.lineage.tct.TdwSqlUtil;
 import com.james.hive.lineage.tct.common.Const;
 import com.james.hive.lineage.tct.utils.HiveLineageMysqlUtil;
-import com.james.hive.lineage.tct.utils.HiveServerUtil;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 
 import java.sql.SQLException;
@@ -13,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * create by jamesqjiang on 2020-06-29.
+ * create by James on 2020-06-29.
  * <p>
  * 获取Hive Table的名称
  * 通过TDW接口获取字段信息，拼接DDL

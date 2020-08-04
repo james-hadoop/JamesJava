@@ -11,7 +11,7 @@ import java.sql.*;
 import java.util.List;
 
 /**
- * create by jamesqjiang on 2020-06-29.
+ * create by James on 2020-06-29.
  * <p>
  * 连接Hive Server，执行DDL，创建Hive库表
  * <p>

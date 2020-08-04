@@ -1,7 +1,5 @@
 package com.james.hive.lineage.tools;
 
-import com.james.hive.lineage.tct.TdwSqlUtil;
-
 import java.io.*;
 
 public class GenerateHiveDdlWithHiveTableTool {
